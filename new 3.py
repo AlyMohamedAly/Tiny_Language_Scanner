@@ -52,23 +52,17 @@ print " "
          print s[ind:temp2], ": Digit"
          ind = temp2
      ind += 1
-  ind = 0
-  temp2 = 0
-  while ind in range(len(s)):
+ ind = 0
+ temp2 = 0
+ while ind in range(len(s)):
+     if s[ind] == ' ':
+         if s[temp2:ind+1] not in KeyWords and s[temp2:ind+1] not in Symbols:
+             print s[temp2:ind+1], ": ID"
+             temp2 = ind + 1
       if s[ind] == '{':
+           if len(s[temp2:ind]) > 0 and s[temp2:ind] not in KeyWords and s[temp2:ind] not in Symbols:
+               print s[temp2:ind], ": ID"
+           else:
           ind = s[ind:].find('}')
-          temp2 = ind
-      elif s[ind] == ' ':
-          if len(s[temp2:ind+1]) > 0:
-              print s[temp2:ind], ": ID"
           temp2 = ind + 1
-      else:
-          if s[temp2:ind+1] in KeyWords:
-              temp2 = ind
-              break
-          for j in s[temp2:ind+1]:
-              if j in Symbols:
-                  temp2 = ind
-                  break
-      ind += 1
- 
+     ind += 1
