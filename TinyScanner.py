@@ -72,6 +72,7 @@ while len(s) != 0:		#Optimize this
                         temp2 = ind + 1
                     else:
                         print s[temp2:ind], ": Unknown Symbol"
+                        temp2 = ind + 1
                 else:
                     temp2 = ind +1
         ind += 1
