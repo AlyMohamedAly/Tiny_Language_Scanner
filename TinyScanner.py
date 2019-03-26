@@ -30,8 +30,8 @@ def SplitSymb(A):
 
 KeyWords = ["if", "then", "else", "end", "repeat", "until", "read", "write"]
 Symbols = ['+', '-', '*', '/', '<', '>', ':=', '(', ')', ';', '{', '}']
-print ""
-ff = open("F:\Input.txt", 'r')
+print ("")
+ff = open("inputme.txt", 'r')
 text = ff.readlines()
 ff.close()
 
@@ -41,21 +41,21 @@ for s in text:
     i, sz = 0, len(s)
     while i < sz:
         if s[i] in KeyWords:
-            print s[i] + " : KeyWord"
+            print (s[i] + " : KeyWord")
         elif s[i] in Symbols:
             if s[i] == '{':
-                temp = s.index('}')
-                print ' '.join(s[i+1:temp]) + " : Comment"
-                i = temp+1
+                temp = s[i:].index('}')
+                print (' '.join(s[i:temp+1+i]) + " : Comment")
+                i += temp
             else:
-                print s[i] + " : Symbol"
+                print (s[i] + " : Symbol")
         else:
             x = NumOrVar(s[i])
             if x == "Nan":
-                print s[i] + " : Syntax Error"
+                print (s[i] + " : Syntax Error")
             elif x == "Variable":
-                print s[i] + " : Variable"
+                print (s[i] + " : Variable")
             elif x == "Number":
-                print s[i] + " : Number"
+                print (s[i] + " : Number")
         i += 1
-    print ""
+    print ("")
